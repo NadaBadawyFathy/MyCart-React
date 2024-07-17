@@ -18,27 +18,60 @@ class Parent extends Component {
         persons,
     }
 
-    funcDelete = (id,index) => {
+    // Delete locations
+    deleteItemLocation = (index) => {
         // deep copy
-        let products = [...this.state.products];
         let locations = [...this.state.locations];
-        let persons = [...this.state.persons];
 
         // action
-        products = products.filter((product) => product.id !== id);
-        locations = locations.filter((location) => location.location_id !== id);
-        persons = persons.filter((person) => person.id !== id);
+        locations = locations.filter((location,indexItem) => indexItem !== index);
+
+        // update
+        this.setState({
+            locations,
+        });
+
+        let countAmount = document.querySelectorAll('.count-location').length;
+        for (let i = index; i < countAmount; i++) {
+            document.querySelectorAll('.count-location')[i].innerHTML = (+(document.querySelectorAll('.count-location')[i+1].innerHTML));
+        }
+    }
+
+    // Delete products
+    deleteItemProduct = (index) => {
+        // deep copy
+        let products = [...this.state.products];
+
+        // action
+        products = products.filter((product,indexItem) => indexItem !== index);
 
         // update
         this.setState({
             products,
-            locations,
+        });
+
+        let countAmount = document.querySelectorAll('.count-product').length;
+        for (let i = index; i < countAmount; i++) {
+            document.querySelectorAll('.count-product')[i].innerHTML = (+(document.querySelectorAll('.count-product')[i+1].innerHTML));
+        }
+    }
+
+    // Delete persons
+    deleteItemPerson = (index) => {
+        // deep copy
+        let persons = [...this.state.persons];
+
+        // action
+        persons = persons.filter((person,indexItem) => indexItem !== index);
+
+        // update
+        this.setState({
             persons,
         });
 
-        let countAmount = document.querySelectorAll('.count').length;
+        let countAmount = document.querySelectorAll('.count-person').length;
         for (let i = index; i < countAmount; i++) {
-            document.querySelectorAll('.count')[i].innerHTML = (+(document.querySelectorAll('.count')[i+1].innerHTML));
+            document.querySelectorAll('.count-person')[i].innerHTML = (+(document.querySelectorAll('.count-person')[i+1].innerHTML));
         }
     }
 
@@ -47,15 +80,13 @@ class Parent extends Component {
         return (
             <div>
                 {
-                    this.state.persons.map((person, index) => (
-                        (index < 10)? (<Cart
-                            key={index} 
-                            index={index}
-                            productName={this.state.products[index]}
-                            locationName={this.state.locations[index]} 
-                            personName={person} delete={this.funcDelete} 
-                            />):''
-                    ))
+                    (<Cart productName={this.state.products} 
+                        locationName={this.state.locations} 
+                        personName={this.state.persons}
+                        deleteLocation={this.deleteItemLocation}
+                        deleteProduct={this.deleteItemProduct}
+                        deletePerson={this.deleteItemPerson}
+                        />)
                 }
             </div>
         )

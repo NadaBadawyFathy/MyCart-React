@@ -16,8 +16,7 @@
       "address":"456 Elm St, Othertown, USA"
    },
    {
-      "id":3,
-      "first_name":"Alice",
+      "id":3,"first_name":"Alice",
       "last_name":"Johnson",
       "email":"alice.johnson@example.com",
       "phone":"555-8765",

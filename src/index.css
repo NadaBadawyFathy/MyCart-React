@@ -13,52 +13,69 @@ html {
 body{
     font-family: 'Josefin Sans', sans-serif;
     /* background-image: linear-gradient(to right,#77A1D3,#79CBCA,#E684AE) !important; */
-    background-color: #2c3e50 !important;
+    background-color: black !important;
 }
+
+/* End global rules */
 .app h1 {
     padding: 30px 40px;
     border-bottom: 1px solid #eee;
-    color: #fff;
+    color: white;
     font-style: italic;
-    background-color: #E684AE;
+    background-color: #333;
     text-align: center;
+}
+.my-carts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    gap: 20px;
+    padding: 20px;
 }
 .my-cart {
     padding: 35px 40px;
     color: #eee;
-    display: flex;
-    gap: 70px;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #eee;
+    text-align: center;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px #333;
 }
 @media (max-width: 1037px) {
     .my-cart {
         flex-direction: column;
         gap: 30px;
         width: 100%;
-        text-align: center;
     }
 }
 .my-cart .img {
     width: 230px;
     height: 180px;
+    margin: auto;
+    margin-bottom: 20px;
 }
 .my-cart .img img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
 }
-.my-cart .desc {
-    width: 250px;
+.my-cart .content {
+    margin-bottom: 30px;
+    height: 200px;
 }
-.my-cart .desc p:last-child {
-    color: rgb(255, 122, 198);
-}
-@media (max-width: 1010px) {
-    .my-cart .desc {
-        width: 100%;
+@media (max-width: 676px) {
+    .my-cart .content {
+        height: fit-content;
     }
+}
+.my-cart .content h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+.my-cart .amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35px;
 }
 .my-cart .plus ,
 .my-cart .minus {
@@ -72,14 +89,8 @@ body{
     font-weight: bold;
     border-radius: 5px;
     padding: 5px 10px;
-    color: black;
+    color: #333;
     cursor: pointer;
-}
-.my-cart .plus {
-    float: left;
-}
-.my-cart .minus {
-    float: right;
 }
 .my-cart .count {
     margin: 0 20px;
@@ -89,6 +100,7 @@ body{
 .my-cart i {
     cursor: pointer;
     color: rgb(255, 122, 198);
+    font-size: 30px;
 }
 
 

@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="app">
         <h1>My Cart</h1>
-        <Parent></Parent>
+        <Parent className="d-flex"></Parent>
       </div>
 
     )
